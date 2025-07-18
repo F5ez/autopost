@@ -340,6 +340,7 @@ flex-basis: 50%;
     transition: all 0.1s ease-in-out
 }
 .side_core_text{
+    max-width: 17vw;
     flex-basis: 100%;
     padding: 15px;
     height: 60vh;
@@ -359,12 +360,27 @@ flex-basis: 50%;
 .side_core_results{
     flex-basis: 100%;
     padding: 10px;
+    color: wheat;
+    border-radius: 10px;
     box-shadow: inset 5px 5px 9px rgba(209, 203, 196, 0.05), inset -2px -2px 5px rgba(255, 255, 255, 0.16);
-    transition: all 0.1s ease-in-out;
+    transition: all 1s ease-in-out;
     display: flex;
     height: 35vh;
+    text-decoration: none;
+    flex-wrap: wrap;
+    max-width: 17vw;
+    background-color: white;
 
+    align-items: flex-start;
+    align-content: flex-start;
     overflow: auto;
+}
+.side_core_results p{
+    font-size: 10px;
+    margin: 0;
+    padding: 5px; /* если нужно внутреннее пространство */
+    width: 100%;
+    box-sizing: border-box;
 }
 .side_arrow{
     height: 100%;

@@ -142,13 +142,38 @@ document.addEventListener("DOMContentLoaded", () => {
         const msg = event.data;
 
         // Если сообщение похоже на ссылку (начинается с http)
-        if (msg.startsWith("http://") || msg.startsWith("https://")) {
+        if (
+            msg.startsWith("http://") ||
+            msg.startsWith("https://") ||
+            msg.includes("Ошибка") ||
+            msg.includes("Error") ||
+            msg.includes("error")
+        ) {
             const linksBlock = document.getElementById("result");
             const p = document.createElement("p");
-            p.innerHTML = `<a href="${msg}" target="_blank">${msg}</a>`;
+
+            // Проверка — если это ошибка, то просто текст "Error", а не ссылка
+            const isError = msg.includes("Ошибка") || msg.includes("Error") || msg.includes("error");
+
+            if (msg.startsWith("http://") || msg.startsWith("https://")) {
+                // Если перед этим была ошибка в логе — подставим "Error"
+                const lastLog = document.getElementById("text_result").lastChild;
+                const hadErrorBefore = lastLog && lastLog.textContent.includes("Ошибка");
+
+                if (hadErrorBefore) {
+                    p.textContent = "Error";
+                } else {
+                    p.innerHTML = `<a href="${msg}" target="_blank">${msg}</a>`;
+                }
+            } else if (isError) {
+                p.textContent = "Error"; // ошибка пришла как сообщение
+            }
+
             linksBlock.appendChild(p);
             return;
         }
+
+
 
         // Обычные логи
         const logBlock = document.getElementById("text_result");
