@@ -1,10 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>AutoWix</title>
+  <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-$END$
+
+<div class="wrap">
+    <div class="girl">
+        <img src="img/girl1-Photoroom.png" alt="">
+    </div>
+    <div class="girl2">
+        <img src="img/girl2.png" alt="">
+    </div>
+    <div class="header">
+
+    </div>
+    <div class="mid">
+
+
+
+        <div class="api_gpt">
+            <div class="api_gpt_label">
+                 API KEY
+            </div>
+            <div class="api_gpt_apikey">
+                <input type="text" id="api_key"
+                      >
+            </div>
+        </div>
+
+
+        <div class="login">
+            <div class="log">
+                <div class="label">Login</div>
+                <input type="text" id="login">
+            </div>
+            <div class="pass">
+                <div class="label">Password</div>
+                <input type="text" id="pass">
+            </div>
+        </div>
+
+
+
+        <div class="count_language">
+            <div class="language">
+                <div class="label">Language</div>
+                <select id="language" ></select>
+            </div>
+            <div class="form_topic" id="generate_topic_btn">
+                Generate Topic
+            </div>
+            <div class="count">
+                <div class="label">Count</div>
+
+                <input type="text" id="only_digits" placeholder="Numbers only">
+            </div>
+        </div>
+
+
+
+        <div class="topic_donor">
+
+            <div class="topic">
+                <div class="topic_text" id="topic_text">
+
+
+                </div>
+            </div>
+
+
+            <div class="donors">
+                <textarea class="info_d" id="donors" cols="20" rows="10"></textarea>
+
+                <div class="text_donors_forgot">DONORS</div>
+
+            </div>
+
+        </div>
+        <div class="count_topic_donor">
+            <div class="label" id="count_topic">Count: 0</div>
+            <div class="label" id="count_donor">Count: 0</div>
+        </div>
+        <div class="count_info_doc_text">
+            <div class="label">Url</div>
+            <div class="label">Anchor</div>
+            <div class="label">KeyWords</div>
+        </div>
+        <div class="info_doc">
+            <textarea class="info_d" id="url"  cols="30" rows="10"></textarea>
+            <textarea class="info_d" id="anchor" cols="30" rows="10"></textarea>
+            <textarea class="info_d" id="keywords"  cols="30" rows="10"></textarea>
+
+        </div>
+
+        <div class="count_info_doc">
+            <div class="label" id="count_url">Count: 0</div>
+            <div class="label" id="count_anchor">Count: 0</div>
+            <div class="label" id="count_key">Count: 0</div>
+        </div>
+
+
+
+
+    </div>
+    <button class="big-red-btn" id="autopost">Post</button>
+    <div class="side_menu">
+        <div class="side_core">
+            <div class="side_core_text" id="text_result"></div>
+            <div class="side_core_result_text" >Result</div>
+            <div class="side_core_results" id="result">
+
+            </div>
+        </div>
+        <div class="side_arrow">
+            <div class="clear clear_log_top" >
+                <div id="clear_log">Clear</div>  </div>
+
+            <div class="side_arrow_arrow" id="arrow">
+                &#x25B6;
+            </div>
+            <div class="clear" >
+                <div id="clear_result">Clear</div>
+                </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="loader" class="loader-overlay" style="display: none;">
+    <div class="spinner"></div>
+</div>
 </body>
+<script>
+    const input = document.getElementById('only_digits');
+
+    input.addEventListener('input', () => {
+        input.value = input.value.replace(/\D/g, ''); // удаляет всё, кроме цифр
+    });
+</script>
+<script src="index.js"></script>
+<script src="generate_topic.js"></script>
+<script src="red_btn.js"></script>
+
 </html>
